@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Read Applicant Data</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<h2>Applicant Data</h2>
+    <a th:href="@{/get/all}" title="show applicants">All Applicants</a>&nbsp;&nbsp;<a href="#" id="link1" title="hide applicants">hide</a><br>
+        <div id="all" class="table">
+            <div class="tr" th:if="${all != null}">
+                <span class="th">ID</span>
+                <span class="th">First Name</span>
+                <span class="th">Last Name</span>
+                <span class="th">Date Of Birth</span>
+                <span class="th">Gender</span>
+                <span class="th">Date Joined</span>
+                <span class="th">Is Employed</span>
+                <span class="th">Contact No</span>
+                <span class="th">Email</span>
+            </div>
+            <div class="tr" th:each="a : ${all}">
+                <span class="td" th:text="${a.getId()}"/>
+                <span class="td" th:text="${a.getFirstName()}"/>
+                <span class="td" th:text="${a.getLastName()}"/>
+                <span class="td" th:text="${a.getDateOfBirth()}"/>
+                <span class="td" th:text="${a.getGender()}"/>
+                <span class="td" th:text="${a.getDateJoined()}"/>
+                <span class="td" th:text="${a.getIsEmployed()}"/>
+                <span class="td" th:text="${a.getContactNo()}"/>
+                <span class="td" th:text="${a.getEmailAddress()}"/>
+            </div>
+        </div>
+    <a th:href="@{/get/all/sorted/fname}" title="show applicants">Sorted By First Name</a>&nbsp;&nbsp;<a href="#" id="link2" title="hide applicants">hide</a><br>
+    <div id="sort-fname" class="table">
+        <div class="tr" th:if="${byFirstName != null}">
+            <span class="th">ID</span>
+            <span class="th">First Name</span>
+            <span class="th">Last Name</span>
+            <span class="th">Date Of Birth</span>
+            <span class="th">Gender</span>
+            <span class="th">Date Joined</span>
+            <span class="th">Is Employed</span>
+            <span class="th">Contact No</span>
+            <span class="th">Email</span>
+        </div>
+        <div class="tr" th:each="fn : ${byFirstName}">
+            <span class="td" th:text="${fn.getId()}"/>
+            <span class="td" th:text="${fn.getFirstName()}"/>
+            <span class="td" th:text="${fn.getLastName()}"/>
+            <span class="td" th:text="${fn.getDateOfBirth()}"/>
+            <span class="td" th:text="${fn.getGender()}"/>
+            <span class="td" th:text="${fn.getDateJoined()}"/>
+            <span class="td" th:text="${fn.getIsEmployed()}"/>
+            <span class="td" th:text="${fn.getContactNo()}"/>
+            <span class="td" th:text="${fn.getEmailAddress()}"/>
+        </div>
+    </div>
+    <a th:href="@{/get/all/sorted/lname}" title="show applicants">Sorted By Last Name</a>&nbsp;&nbsp;<a href="#" id="link3" title="hide applicants">hide</a><br>
+    <div id="sort-lname" class="table">
+        <div class="tr" th:if="${byLastName != null}">
+            <span class="th">ID</span>
+            <span class="th">First Name</span>
+            <span class="th">Last Name</span>
+            <span class="th">Date Of Birth</span>
+            <span class="th">Gender</span>
+            <span class="th">Date Joined</span>
+            <span class="th">Is Employed</span>
+            <span class="th">Contact No</span>
+            <span class="th">Email</span>
+        </div>
+        <div class="tr" th:each="ln : ${byLastName}">
+            <span class="td" th:text="${ln.getId()}"/>
+            <span class="td" th:text="${ln.getFirstName()}"/>
+            <span class="td" th:text="${ln.getLastName()}"/>
+            <span class="td" th:text="${ln.getDateOfBirth()}"/>
+            <span class="td" th:text="${ln.getGender()}"/>
+            <span class="td" th:text="${ln.getDateJoined()}"/>
+            <span class="td" th:text="${ln.getIsEmployed()}"/>
+            <span class="td" th:text="${ln.getContactNo()}"/>
+            <span class="td" th:text="${ln.getEmailAddress()}"/>
+        </div>
+    </div>
+
+    <a th:href="@{/}">Home</a>
+</body>
+<script>
+    document.getElementById('link1').addEventListener('click',function(){
+        document.getElementById('all').style.display = 'none';
+});
+
+ document.getElementById('link2').addEventListener('click',function(){
+        document.getElementById('sort-fname').style.display = 'none';
+});
+
+ document.getElementById('link3').addEventListener('click',function(){
+        document.getElementById('sort-lname').style.display = 'none';
+});
+</script>
+</html>

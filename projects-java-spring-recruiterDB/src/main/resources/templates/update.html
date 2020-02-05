@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Applicant</title>
+</head>
+<body>
+<h2>Update Applicant</h2>
+Applicant ID: <span th:if="${all == null}">Nothing to show</span>
+    <select th:if="${all != null}" onchange="load(this.value)">
+        <option th:each="a : ${all}" th:value="${a.getId()}" th:text="${a.getId()}">
+    </select>
+    <div th:if="${applicant != null}">
+        <form action="#" th:action="@{/update}" th:object="${applicant}" method="post">
+            <p>ID: <input readonly type="text" th:field="*{id}" /></p>
+            <p>First Name: <input type="text" th:field="*{firstName}" /></p>
+            <p>Last Name: <input type="text" th:field="*{lastName}" /></p>
+            <p>DOB: <input type="date" th:field="*{dateOfBirth}" /></p>
+            <p>Gender:
+                <input type="radio" name="gender" th:field="*{gender}" value="male"> Male
+                <input type="radio" name="gender" th:field="*{gender}" value="female"> Female
+            </p>
+            <p>Date Joind: <input type="date" th:field="*{dateJoined}" /></p>
+            <p>Is Employed:
+                <select th:field="*{isEmployed}">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </p>
+            <p>Contact Number: <input type="text" th:field="*{contactNo}" /></p>
+            <p>Email Address: <input type="text" th:field="*{emailAddress}" /></p>
+            <p><input type="submit" value="Update" /></p>
+        </form>
+    </div>
+    <p>
+        <label th:text="${message}"/>
+    </p>
+    <p>
+    <a th:href="@{/}">Home</a>
+    </p>
+</body>
+<script>
+    function load(val) {
+      window.location.href = "/get/"+val;
+    }
+</script>
+</html>

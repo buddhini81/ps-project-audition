@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Applicant</title>
+</head>
+<body>
+    <h2>Delete Applicant</h2>
+    Applicant ID: <span th:if="${all == null}">Nothing to show</span>
+    <select th:if="${all != null}" onchange="remove(this.value)">
+        <option th:each="a : ${all}" th:value="${a.getId()}" th:text="${a.getId()} +': '+ ${a.getFirstName()} +' '+ ${a.getLastName()}">
+    </select>
+    <p>
+        <label id="msg" th:text="${message}"/>
+    </p>
+    <p>
+        <a th:href="@{/}">Home</a>
+    </p>
+</body>
+<script>
+    function remove(val) {
+      var id = prompt("Please enter the ID you wish to delete", "Delete Applicant");
+      if(id != null) {
+          if (id == val) {
+             window.location.href = "/delete/"+val;
+          } else {
+             document.getElementById("msg").innerHTML = "The ID you want to delete is not the same! Please recheck ";
+          }
+      }
+    }
+</script>
+</html>
