@@ -8,6 +8,11 @@ How to run the tests
 There are 19 tests in total for the four modules. T0 run the tests, right click on the test package and run all tests or run module tests individually.
 Initially, all 19 test will fail. After the completion of each module, all tests of that module should pass.
 
+Setting up
+----------
+Download/clone from the repository and open the project folder 'projects-java-spring-recruiterDB' in your IDE. 
+The application uses a H2 in-memory database. Therefore, no database configurations are needed.
+For details related to the database, check the application.properties file under resources.
 
 Module 1
 --------
